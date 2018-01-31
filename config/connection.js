@@ -1,6 +1,6 @@
 var config  = require('./config');
 var mongooseOpts ={ useMongoClient: true,
-				 connectTimeoutMS: 5000 };
+				 connectTimeoutMS: 5000  };
 //var mongooseOpts ={ useMongoClient: true}
 
 //create db connection using NODEJS NATIVE promises
