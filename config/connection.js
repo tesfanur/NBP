@@ -8,7 +8,7 @@ module.exports.connectMongoDB = function(mongoose){
 
 mongoose.Promise=global.Promise;//overide deprecated promise function
 
-mongoose.connect(config.PROD_MONGODB, mongooseOpts)
+mongoose.connect(config.MONGO_PRO, mongooseOpts)
     .then(function () {
           console.log('DB CONNECTION ESTABLISHED SUCCESSFULLY!\n');
     }).catch(function (err) {
