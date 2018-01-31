@@ -1,0 +1,38 @@
+{
+  "name": "aa_lrt_ticketing_sys_api",
+  "version": "1.0.0",
+  "description": "Addis Ababa Light Rail Transit Train Online Tickeing api",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "tesfaye belachew abebe",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "crypto-js": "^3.1.9-1",
+    "debug": "^3.1.0",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "express-validator": "^4.3.0",
+    "jsonwebtoken": "^8.1.1",
+    "lodash": "^4.17.4",
+    "moment": "^2.20.1",
+    "mongoose": "^4.13.6",
+    "mongoose-paginate": "^5.0.3",
+    "morgan": "^1.9.0",
+    "multer": "^1.3.0",
+    "passport": "^0.4.0",
+    "q": "^1.5.1",
+    "serve-favicon": "^2.4.5",
+    "underscore": "^1.8.3"
+  }
+}
