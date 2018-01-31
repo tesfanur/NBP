@@ -1,11 +1,11 @@
 //configuration variables
 module.exports = {
 	// HTTP PORT
-	PORT: process.env.PORT || 8888,
+	PORT: process.env.PORT || 5000,
 	// LOCAL DB CONNECTION URI
 	AA_LRT_TICKETING_DB_URI : 'mongodb://127.0.0.1/AA_LRT_TICKETING_DB',
 	//PROD_MONGODB:"mongodb://tesfaye:mongolab@ds119688.mlab.com:19688/my_mongo_db_for_practice",
-	//@ => %40 
+	//@ => %40
 	PROD_MONGODB: "mongodb://tesfanur:practice%40123@ds221258.mlab.com:21258/gebeyapracticedb",
 	JWT_SECRET: "shhh",
 	TOKEN_LENGTH: 22,
