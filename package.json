@@ -4,8 +4,8 @@
   "description": "Addis Ababa Light Rail Transit Train Online Tickeing api",
   "main": "app.js",
   "engines": {
-    "node": "6.3.1",
-    "npm": "3.10.3"
+    "node": "8.9.4",
+    "npm": "5.6.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
