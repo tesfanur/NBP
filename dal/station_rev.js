@@ -1,25 +1,19 @@
-//Load module dependencies
-
-const StationModel = require('../models/station');
+/**
+*Load module dependecies
+*/
+const StationModel = require('../models/station_rev');
 
 const debug   = require('debug')('api:station-dal');
 const logMsg = require('../lib/utils').showMsg;
 
 const StationDalModule = (function(StationModel){
   'use strict';
-//1. Create StationModel
+/**
+*1. Create StationModel
+*/
  function createStation(data, cb){
     debug('creating a new station');
     let station = new StationModel(data);
-           // station.save()
-           //       .then(stationData => {
-           //          if(!stationData) return cb(null,null);
-           //          cb(null,stationData);
-           //       })
-           //       .catch(err => {
-           //              logMsg(err.message);
-           //               return cb(err,null);
-           //                 });
            station.save()
                  .then(stationData => {
                     if(!stationData) return cb(null,null);
@@ -28,7 +22,9 @@ const StationDalModule = (function(StationModel){
                  err => {logMsg(err.message);
                          return cb(err,null);})
 }
-// 2. Get all StationModels
+/**
+*2. Get all StationModels
+*/
 function getAllStations(query, cb){
     debug('getting all station collection');
  StationModel.find(query)
@@ -39,7 +35,9 @@ function getAllStations(query, cb){
             if(err) return cb(err)});
 
 }
-//Get Station by Id
+/**
+*3.Get Station by Id
+*/
 function getStationById(query, cb){
     debug('getting a station', query);
  StationModel.findOne(query)
@@ -53,8 +51,9 @@ function getStationById(query, cb){
         .catch(err => {
             return cb(err)});
 }
-
-//Update Station
+/**
+*3.Update Station
+*/
 function updateStation(query, update, cb){
     debug('updating a station', query);
     var opts = {
@@ -65,7 +64,9 @@ function updateStation(query, update, cb){
         .then(station => cb(null, station || {}))
         .catch( err   => {if(err) return cb(err);});
 }
-//Remove Station
+/**
+*4.Remove Station
+*/
 function deleteStation(query, cb){
     debug('deleting a station');
  StationModel.findOne(query)
@@ -83,7 +84,9 @@ function deleteStation(query, cb){
                 ;})
          .catch(err=>{return cb(err)} );
 }
-//Get station by pagination
+/**
+*5.Get station by pagination
+*/
 function getStationByPagination(query, qs, cb){
     debug('fetching a collection of stations');
 
@@ -108,7 +111,10 @@ function getStationByPagination(query, qs, cb){
     });
 }
 
-//return StationDalModule public APIs
+//
+/**
+*6.return StationDalModule public APIs
+*/
   return {create : createStation,
   getAll : getAllStations,
   getById : getStationById,

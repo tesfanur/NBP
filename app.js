@@ -15,7 +15,7 @@ var  db      = require('./config/connection'),
 		 Profile = require('./models/profile'),
 		 display = require('./lib/utils').showMsg;
 
-//instantiate express server
+//instantiate express -server
 var app  = express();
 debug('AA LRT ONLINE TICKETING SYSTEM');
 //configuration your app
@@ -25,15 +25,14 @@ app.set('SECRET', config.SECRET)
 //strat database connection
 db.connectMongoDB(mongoose);
 
-//use middlewares required for express app
-app.use(bodyParser.json());//parse json object from html body
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(expressValidator());
+//set up express app by passing required middlewares
+app.use(bodyParser.json());// parse application/json
+app.use(bodyParser.urlencoded({ extended: true }));// parse application/x-www-form-urlencoded
+app.use(expressValidator());//use for user input validation
 app.use(morgan('dev')); //Logging HTTP Method and URL
-//add url econcoded feature for file upload
 app.use(cookieParser());
 app.use(expressSession(
-	{secret:"kjlrt437658349yt3iugsdf",//use salt from bcrypt
+	{secret:config.SECRET,//use salt from bcrypt
 	resave:false,
 	saveUninitialized:true}));
 

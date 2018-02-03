@@ -5,15 +5,14 @@ var userRouter = require('./user');
 var profileRouter = require('./profile');
 var profileImageRouter = require('./profileImage');
 var scheduleRouter = require('./schedule');
-var stationRouter = require('./station_mod');
+var stationRouter = require('./station_rev');
+var fareRouter = require('./fare');
 var ticketRouter = require('./ticket');
 var home = require('../lib/utils').root;
 
 
 module.exports = function appRouter(app) {
 
-	// Auth Routes
-	//app.use('/auth', authRouter);
 	//User router
 	app.use('/users', userRouter);
 	//profile routes
@@ -24,6 +23,8 @@ module.exports = function appRouter(app) {
 	app.use('/schedules', scheduleRouter);
 	//Ticket routes
 	app.use('/tickets', ticketRouter);
+	//Fare/Payment routes
+	app.use('/fares', fareRouter);
  //get home page
 	app.get('/',home);
 

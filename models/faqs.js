@@ -1,23 +1,17 @@
-var mongoose = require('mongoose');
-/*FAQs:
-=================
-id:Number
-datePosted: Date
-postedBy: ObjectId
-question: String
-answer: String*/
-
+var mongoose = require('mongoose'); 
 var Schema = mongoose.Schema;
-//frequently asked question schema
+/**
+*frequently asked questions and answers schema
+*/
 var FaqSchema = new Schema({
     question : {type: String, required: true},
-    answer: {type: String, required: true},
+    answer   : {type: String, required: true},
     postedBy : {type: String, required: true},
-    datePosted : {type: String},
-    dateModified : {type: String} 
+    datePosted   : {type: Date, default: Date.now},
+    dateModified : {type: Date, default: Date.now}
 });
 
- 
+
 
 //export user model
 module.exports = mongoose.model('FAQs', FaqSchema);

@@ -1,15 +1,17 @@
-//Load module dependecies
+/**
+*Load module dependecies
+*/
 var debug    = require('debug');
 var moment   = require('moment');
 var mongoose = require('mongoose');
 var _        = require('lodash');//lodash can also do the same.check?
-var Station  = require('../models/station');
+var Station  = require('../models/station_rev');
 var expressValidator = require('express-validator');
 
-var StationDal   = require('../dal/station_mod');
+var StationDal   = require('../dal/station_rev');
 var handleError  = require('../lib/utils').handleError;
 var errorHandler = require('../lib/utils').errorHandler;
-var logMsg = require('../lib/utils').showMsg;
+var logMsg       = require('../lib/utils').showMsg;
 
 var errorObj = {
     status : 500,
@@ -28,9 +30,11 @@ var StationModule = (function (StationDal) {
   'use strict';
   //private members
   function _validateUserRegistationInput(req, res,next){
-    req.checkBody('stationName','station name is required').notEmpty();
+    req.checkBody('name','station name is required').notEmpty();
     req.checkBody('stationId','station id is required').notEmpty();
-    req.checkBody('locationFromStartingPoint','locationFromStartingPoint is required').notEmpty();
+    req.checkBody('userId','user id is required').notEmpty();
+    req.checkBody('latitude','latitude is required').notEmpty();
+    req.checkBody('longitude','longitude is required').notEmpty();
       var errors = req.validationErrors();
       if(errors){
         logMsg(errors);
@@ -46,7 +50,7 @@ function createStation (req, res, next){
         var body = req.body;
         //pick only the required attributes from the body
         //do the same for other post requests
-        var body = _.pick(req.body,"stationName","stationId","locationFromStartingPoint");
+        var body = _.pick(req.body,["name","stationId","userId","latitude","longitude"]);
 
         StationDal.create(body, function (err, station){
             if(err){
@@ -165,11 +169,11 @@ function getStationByPagination (req, res, next){
 */
 function findStationByName (req, res, next){
      //local variables
-      var stationName = req.params.name.trim();
-      customError.message="STATION \'"+ stationName +"\' NOT FOUND";
+      var name = req.params.name.trim();
+      customError.message="STATION \'"+ name +"\' NOT FOUND";
     console.log(typeof stationId);
 
-    Station.findByName(stationName)
+    Station.findByName(name)
            .then(function(station){
              if(!station)
              errorHandler(res, customError);

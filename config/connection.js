@@ -8,7 +8,7 @@ module.exports.connectMongoDB = function(mongoose){
 
 mongoose.Promise=global.Promise;//overide deprecated promise function
 
-mongoose.connect(config.MONGO_PRO, mongooseOpts)
+mongoose.connect(config.AA_LRT_TICKETING_DB_URI, mongooseOpts)
     .then(function () {
           console.log('DB CONNECTION ESTABLISHED SUCCESSFULLY!\n');
     }).catch(function (err) {

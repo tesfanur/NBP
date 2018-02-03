@@ -1,16 +1,11 @@
 var mongoose = require('mongoose');
-/*
-Schedule:
-======================
-scheduleId: Number
-sourceStationId:ObjectId
-destinationStationId: Number
-price: Nmuber
-distanceBetweenStations: Number
-*/
+
 var Schema = mongoose.Schema;
 //try to redesign this schema so that your can clearly relate the schedule with
 // the static data regarding stations records
+/**
+*Train Schedule
+*/
 var ScheduleSchema = new Schema({
     scheduleId      : {type: Number},
     sourceStationId : {type: Schema.Types.ObjectId, required: true, ref:'Station'},
@@ -21,8 +16,5 @@ var ScheduleSchema = new Schema({
     modifiedAt :{type:Date, default:Date.now}
 
 });
-
-
-
 //export user model
 module.exports = mongoose.model('Schedule', ScheduleSchema);

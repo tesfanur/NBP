@@ -5,14 +5,17 @@ config = require('../config/config');//the higher the value the more secure hash
 //find all other function that are supported by mongoose model/Schema
 //before you do from scratch
 var Schema = mongoose.Schema;
+/**
+*Usrers Schema
+*/
 var UserSchema = new Schema({
-    email    : {type: String, required: 'please enter email',trim: true, unique:true},
-    password : {type: String, required: 'please enter your password'},
-    username : {type: String, trim: true, required: 'please enter your username'},
-    firstName: {type: String, trim: true},
-    lastName : {type: String, trim: true},
-    createdAt :{type:Date, default:Date.now},
-    modifiedAt :{type:Date, default:Date.now}
+    email     : {type: String, required: 'please enter email',trim: true, unique:true},
+    password  : {type: String, required: 'please enter your password'},
+    username  : {type: String, trim: true, required: 'please enter your username'},
+    firstName : {type: String, trim: true},
+    lastName  : {type: String, trim: true},
+    createdAt : {type:Date, default:Date.now},
+    modifiedAt: {type:Date, default:Date.now}
 });
 //authenticate input against database
 UserSchema.statics.authenticate = function (email, password, callback) {
@@ -39,7 +42,7 @@ UserSchema.statics.authenticate = function (email, password, callback) {
 UserSchema.pre('save', function (next) {
   var user = this;
   if(typeof user.email ==="string"){
-  //move this feature while validating user input using express-validator  
+  //move this feature while validating user input using express-validator
   user.email = user.email.toLowerCase();
   }
   bcrypt.hash(user.password, config.SALT_WORK_FACTOR, function (err, hash){
